@@ -1,0 +1,10 @@
+S:\VSProjects\DllServer\DllServer\DllServer\bin\Debug\DllServer.exe.config
+S:\VSProjects\DllServer\DllServer\DllServer\bin\Debug\DllServer.exe
+S:\VSProjects\DllServer\DllServer\DllServer\bin\Debug\DllServer.pdb
+S:\VSProjects\DllServer\DllServer\DllServer\obj\Debug\DllServer.csprojAssemblyReference.cache
+S:\VSProjects\DllServer\DllServer\DllServer\obj\Debug\DllServer.ServerForm.resources
+S:\VSProjects\DllServer\DllServer\DllServer\obj\Debug\DllServer.Properties.Resources.resources
+S:\VSProjects\DllServer\DllServer\DllServer\obj\Debug\DllServer.csproj.GenerateResource.cache
+S:\VSProjects\DllServer\DllServer\DllServer\obj\Debug\DllServer.csproj.CoreCompileInputs.cache
+S:\VSProjects\DllServer\DllServer\DllServer\obj\Debug\DllServer.exe
+S:\VSProjects\DllServer\DllServer\DllServer\obj\Debug\DllServer.pdb
