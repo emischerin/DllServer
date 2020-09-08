@@ -46,8 +46,17 @@ namespace DllServer
             if(ValidateOnStartDll(ref dll_name))
             {
                 Dll to_start = awaiting_dlls[dll_name];
-                Assembly a = Assembly.LoadFrom(to_start.Path);
-                
+
+                awaiting_dlls.Remove(dll_name);
+
+                running_dlls.Add(dll_name,to_start);
+                               
+
+                Thread t = new Thread(new ParameterizedThreadStart(StartExecutionThread));
+
+                running_dll_executing_threads.Add(to_start.Name,t);
+
+                t.Start();
 
             }
 
@@ -55,7 +64,7 @@ namespace DllServer
         }
 
         public void AddDll(ref List<Dll> dlls)
-        {  
+        {   
             List<string> fail_to_load = new List<string>();
              
             
@@ -86,7 +95,28 @@ namespace DllServer
             return ((awaiting_dlls.ContainsKey(dll_name)) && 
                 (!running_dlls.ContainsKey(dll_name)) && (!running_dll_executing_threads.ContainsKey(dll_name)));
         }
-       
+        
+
+        private static void StartExecutionThread(object main)
+        {
+            
+
+            try
+            {
+                
+                Assembly a = Assembly.LoadFrom
+               (
+                    (main as Dll).Path
+                );
+                a.GetType().GetMethod("Main").Invoke(a, null);
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+            
+        }
         
     }
 }
