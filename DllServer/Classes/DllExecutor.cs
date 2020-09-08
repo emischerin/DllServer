@@ -6,28 +6,27 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Reflection;
 
 namespace DllServer
 {
     public class DllExecutor
     {
-        private ErrorProvider ep = new ErrorProvider();
+        private ErrorHandler ep = new ErrorHandler();
 
         private Dictionary<string,Dll> running_dlls = new Dictionary<string, Dll>();
         private Dictionary<string,Dll> awaiting_dlls = new Dictionary<string, Dll>();
         private List<Dll> running_dlls_data_source;
         private List<Dll> awaiting_dlls_data_source;
-        private Dictionary<string,Thread> running_dll_executing_thread = new Dictionary<string, Thread>();
-        private Mutex awaiting_dlls_mutex = new Mutex();
-        private Mutex running_dlls_mutex = new Mutex();
+        private Dictionary<string,Thread> running_dll_executing_threads = new Dictionary<string, Thread>();
+        
 
         public List<Dll> RunningDlls_data_source
         {
             get 
             { 
-                running_dlls_mutex.WaitOne();
+                
                 running_dlls_data_source = running_dlls.Values.ToList();
-                running_dlls_mutex.ReleaseMutex();
                 return running_dlls_data_source;
             }
         }
@@ -36,53 +35,30 @@ namespace DllServer
         {
             get
             {
-                awaiting_dlls_mutex.WaitOne();
+                
                 awaiting_dlls_data_source = running_dlls.Values.ToList();
-                awaiting_dlls_mutex.ReleaseMutex();
                 return awaiting_dlls_data_source;
             }
         }
 
-        public void StartDll(string dll_name)
+        public void StartDll(ref string dll_name)
         {
-            
-            Dll tmp;
-            awaiting_dlls_mutex.WaitOne();
-
-            if (!awaiting_dlls.ContainsKey(dll_name))
+            if(ValidateOnStartDll(ref dll_name))
             {
-                awaiting_dlls_mutex.ReleaseMutex();
-                MessageBox.Show("Assembly wasn't loaded");
-                return;
-            }
-            else
-            {
-                tmp = awaiting_dlls[dll_name];
-                awaiting_dlls.Remove(dll_name);
-
-                running_dlls_mutex.WaitOne();
-                if(running_dlls.ContainsKey(dll_name))
-                {
-                    awaiting_dlls_mutex.ReleaseMutex();
-                    running_dlls_mutex.ReleaseMutex();
-                    return;
-                }
-                else
-                {
-
-                }
-
+                Dll to_start = awaiting_dlls[dll_name];
+                Assembly a = Assembly.LoadFrom(to_start.Path);
                 
+
             }
 
-            
+                        
         }
 
         public void AddDll(ref List<Dll> dlls)
         {  
             List<string> fail_to_load = new List<string>();
              
-            awaiting_dlls_mutex.WaitOne();
+            
 
             for(int i = 0; i < dlls.Count;++i)
             {
@@ -97,14 +73,20 @@ namespace DllServer
                 
                     
             }
-
-            awaiting_dlls_mutex.ReleaseMutex();
+                      
 
             ep.ShowFailedToLoadDlls(ref fail_to_load);
                                           
                 
 
         }
+
+        private bool ValidateOnStartDll(ref string dll_name)
+        {
+            return ((awaiting_dlls.ContainsKey(dll_name)) && 
+                (!running_dlls.ContainsKey(dll_name)) && (!running_dll_executing_threads.ContainsKey(dll_name)));
+        }
+       
         
     }
 }
