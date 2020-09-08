@@ -10,5 +10,7 @@ namespace DllServer.Classes
     {
         public string Name { get;set;}
         public string Path { get;set;}
+        
+        public DateTime StartTime { get;set;}
     }
 }

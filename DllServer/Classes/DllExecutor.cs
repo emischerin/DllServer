@@ -17,8 +17,17 @@ namespace DllServer
         private Mutex awaiting_dll_mutex = new Mutex();
         private Mutex running_dlls_mutex = new Mutex();
 
+        public List<Dll> RunningDlls_data_source
+        {
+            get { return new List<Dll>(running_dlls.Values);}
+        }
 
-       
+        public List<Dll> AwaitingDlls_data_source
+        {
+            get { return new List<Dll>(awaiting_dlls.Values);}
+        }
+
+
 
         public void AddDll(ref List<Dll> dlls)
         {
