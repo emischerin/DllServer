@@ -8,3 +8,4 @@ S:\VSProjects\DllServer\DllServer\DllServer\obj\Debug\DllServer.csproj.GenerateR
 S:\VSProjects\DllServer\DllServer\DllServer\obj\Debug\DllServer.csproj.CoreCompileInputs.cache
 S:\VSProjects\DllServer\DllServer\DllServer\obj\Debug\DllServer.exe
 S:\VSProjects\DllServer\DllServer\DllServer\obj\Debug\DllServer.pdb
+S:\VSProjects\DllServer\DllServer\DllServer\obj\Debug\DllServer.Forms.TaskManagerForm.resources

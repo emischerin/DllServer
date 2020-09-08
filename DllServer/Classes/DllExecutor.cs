@@ -30,9 +30,9 @@ namespace DllServer
 
 
         public void AddDll(ref List<Dll> dlls)
-        {
+        { 
             List<string> fail_to_load = new List<string>();
-
+             
             awaiting_dll_mutex.WaitOne();
 
             for(int i = 0; i < dlls.Count;++i)
