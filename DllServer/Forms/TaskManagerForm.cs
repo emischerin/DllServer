@@ -7,14 +7,37 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DllServer.Classes;
 
 namespace DllServer.Forms
 {
     public partial class TaskManagerForm : Form
     {
-        public TaskManagerForm()
+        private DllExecutor dll_executor;
+        public TaskManagerForm(DllExecutor de)
         {
+            this.dll_executor = de;
             InitializeComponent();
+        }
+
+        private void StartDllButton_Click(object sender, EventArgs e)
+        {
+            Dll selected_dll;
+            if((dll_executor != null) && 
+                (selected_dll = (AwaitingDlls_DataGrid.SelectedRows[0].DataBoundItem as Dll)) != null)
+            {                
+                dll_executor.StartDll(selected_dll.Name);
+            }
+        }
+
+        private void StopDllButton_Click(object sender, EventArgs e)
+        {
+            Dll selected_dll;
+            if ((dll_executor != null) &&
+                (selected_dll = (RunningDlls_DataGrid.SelectedRows[0].DataBoundItem as Dll)) != null)
+            {
+                dll_executor.StopDll(selected_dll.Name);
+            }
         }
     }
 }
