@@ -44,7 +44,7 @@ namespace DllServer
 
         public void OpenTaskManagerWindow()
         {
-            TaskManagerForm tmf = new TaskManagerForm();
+            TaskManagerForm tmf = new TaskManagerForm(this.dllexecutor);
             tmf.ShowDialog();
             
         }

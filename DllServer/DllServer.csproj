@@ -51,7 +51,7 @@
     <Compile Include="Classes\DllLoader.cs" />
     <Compile Include="Classes\DllSearcher.cs" />
     <Compile Include="Classes\DllServerFacade.cs" />
-    <Compile Include="Classes\ErrorProvider.cs" />
+    <Compile Include="Classes\ErrorHandler.cs" />
     <Compile Include="Forms\ServerForm.cs">
       <SubType>Form</SubType>
     </Compile>

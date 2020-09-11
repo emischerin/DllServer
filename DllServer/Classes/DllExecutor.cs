@@ -41,7 +41,7 @@ namespace DllServer
             }
         }
 
-        public void StartDll(ref string dll_name)
+        public void StartDll(string dll_name)
         {
             if(ValidateOnStartDll(ref dll_name))
             {
@@ -63,6 +63,27 @@ namespace DllServer
                         
         }
 
+        public void StopDll(string dll_name)
+        {
+            if(running_dll_executing_threads.ContainsKey(dll_name))
+            {
+                if(ValidateOnStopThread(dll_name))
+                {
+                    running_dll_executing_threads[dll_name].Abort();
+                    running_dll_executing_threads.Remove(dll_name);
+
+                    Dll tmp = running_dlls[dll_name];
+
+                    running_dlls.Remove(dll_name);
+
+                    awaiting_dlls.Add(dll_name,tmp);
+                    
+
+                }
+
+                
+            }
+        }
         public void AddDll(ref List<Dll> dlls)
         {   
             List<string> fail_to_load = new List<string>();
@@ -88,6 +109,14 @@ namespace DllServer
                                           
                 
 
+        }
+
+        private bool ValidateOnStopThread(string dll_name)
+        {
+            ThreadState t = running_dll_executing_threads[dll_name].ThreadState;
+
+            return t != ThreadState.Aborted || t != ThreadState.AbortRequested;
+            
         }
 
         private bool ValidateOnStartDll(ref string dll_name)
@@ -118,5 +147,6 @@ namespace DllServer
             
         }
         
+     
     }
 }

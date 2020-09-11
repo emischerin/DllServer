@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace DllServer.Classes
 {
-    public class ErrorProvider
+    public class ErrorHandler
     {
         public void ShowFailedToLoadDlls(ref List<string> failed_to_load)
         {
@@ -20,7 +20,7 @@ namespace DllServer.Classes
             sb.Append(Errormessage);
             sb.Append(separator);
 
-            for(int i = 0; i < failed_to_load.Count;++i)
+            for(int i = 0; i < failed_to_load.Count;++i) 
             {
                 sb.Append(failed_to_load[i]);
                 sb.Append(separator);
