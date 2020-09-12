@@ -18,12 +18,12 @@ namespace DllServer
 
         private Dictionary<string,Dll> running_dlls = new Dictionary<string, Dll>();
         private Dictionary<string,Dll> awaiting_dlls = new Dictionary<string, Dll>();
-        private List<Dll> running_dlls_data_source = new List<Dll>();
+        public BindingList<Dll> running_dlls_data_source = new BindingList<Dll>();
         public BindingList<Dll> awaiting_dlls_data_source = new BindingList<Dll>();
         private Dictionary<string,Thread> running_dll_executing_threads = new Dictionary<string, Thread>();
         
 
-        public List<Dll> RunningDlls_data_source
+        public BindingList<Dll> RunningDlls_data_source
         {
             get 
             { 
@@ -63,7 +63,7 @@ namespace DllServer
                         
         }
 
-        public void StopDll(string dll_name)
+        public void StopDll(string dll_name) 
         {
             if(running_dll_executing_threads.ContainsKey(dll_name))
             {
@@ -147,20 +147,20 @@ namespace DllServer
 
                 if(entry_point != null)
                 {
+                    Type entry_point_type = entry_point.DeclaringType;
+
+                    object o = Activator.CreateInstance(entry_point_type);
+
                     
+
+                    entry_point.Invoke(o,new object[1]);
+
+
                 }
                 
                 
 
 
-                //Type t = a.GetType("Program");
-                
-
-                //MethodInfo mi = t.GetMethod("Main");
-
-                //object o = Activator.CreateInstance(t);
-
-                //mi.Invoke(o,null);
 
             }
             catch (Exception e)

@@ -20,6 +20,7 @@ namespace DllServer.Forms
             InitializeComponent();
             this.dll_executor = de;
             AwaitingDlls_DataGrid.DataSource = de.AwaitingDlls_data_source;
+            RunningDlls_DataGrid.DataSource = de.RunningDlls_data_source;
             
             
         }
