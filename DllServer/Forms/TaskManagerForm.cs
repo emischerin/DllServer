@@ -16,8 +16,12 @@ namespace DllServer.Forms
         private DllExecutor dll_executor;
         public TaskManagerForm(DllExecutor de)
         {
-            this.dll_executor = de;
+            
             InitializeComponent();
+            this.dll_executor = de;
+            AwaitingDlls_DataGrid.DataSource = de.AwaitingDlls_data_source;
+            
+            
         }
 
         private void StartDllButton_Click(object sender, EventArgs e)

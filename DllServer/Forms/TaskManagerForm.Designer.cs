@@ -30,27 +30,29 @@
         {
             this.components = new System.ComponentModel.Container();
             this.AwaitingDlls_DataGrid = new System.Windows.Forms.DataGridView();
+            this.AwaitingDllsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.AwaitingDlls_label = new System.Windows.Forms.Label();
             this.RunningDlls_DataGrid = new System.Windows.Forms.DataGridView();
-            this.RunningDlls_label = new System.Windows.Forms.Label();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pathDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.startTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RunningDllsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.RunningDlls_label = new System.Windows.Forms.Label();
+            this.StartDllButton = new System.Windows.Forms.Button();
+            this.StopDllButton = new System.Windows.Forms.Button();
             this.nameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pathDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.startTimeDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AwaitingDllsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.StartDllButton = new System.Windows.Forms.Button();
-            this.StopDllButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.AwaitingDlls_DataGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AwaitingDllsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RunningDlls_DataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RunningDllsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AwaitingDllsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // AwaitingDlls_DataGrid
             // 
+            this.AwaitingDlls_DataGrid.AllowUserToResizeColumns = false;
+            this.AwaitingDlls_DataGrid.AllowUserToResizeRows = false;
             this.AwaitingDlls_DataGrid.AutoGenerateColumns = false;
             this.AwaitingDlls_DataGrid.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.AwaitingDlls_DataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -58,13 +60,19 @@
             this.nameDataGridViewTextBoxColumn1,
             this.pathDataGridViewTextBoxColumn1,
             this.startTimeDataGridViewTextBoxColumn1});
-            this.AwaitingDlls_DataGrid.DataMember = "AwaitingDlls_data_source";
+            this.AwaitingDlls_DataGrid.DataBindings.Add(new System.Windows.Forms.Binding("Tag", this.AwaitingDllsBindingSource, "Name", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.AwaitingDlls_DataGrid.DataSource = this.AwaitingDllsBindingSource;
-            this.AwaitingDlls_DataGrid.Location = new System.Drawing.Point(12, 30);
+            this.AwaitingDlls_DataGrid.GridColor = System.Drawing.SystemColors.ButtonShadow;
+            this.AwaitingDlls_DataGrid.Location = new System.Drawing.Point(16, 30);
             this.AwaitingDlls_DataGrid.MultiSelect = false;
             this.AwaitingDlls_DataGrid.Name = "AwaitingDlls_DataGrid";
             this.AwaitingDlls_DataGrid.Size = new System.Drawing.Size(269, 314);
             this.AwaitingDlls_DataGrid.TabIndex = 0;
+            // 
+            // AwaitingDllsBindingSource
+            // 
+            this.AwaitingDllsBindingSource.DataMember = "AwaitingDlls_data_source";
+            this.AwaitingDllsBindingSource.DataSource = typeof(DllServer.DllExecutor);
             // 
             // AwaitingDlls_label
             // 
@@ -92,15 +100,6 @@
             this.RunningDlls_DataGrid.Size = new System.Drawing.Size(287, 314);
             this.RunningDlls_DataGrid.TabIndex = 2;
             // 
-            // RunningDlls_label
-            // 
-            this.RunningDlls_label.AutoSize = true;
-            this.RunningDlls_label.Location = new System.Drawing.Point(498, 11);
-            this.RunningDlls_label.Name = "RunningDlls_label";
-            this.RunningDlls_label.Size = new System.Drawing.Size(64, 13);
-            this.RunningDlls_label.TabIndex = 3;
-            this.RunningDlls_label.Text = "RunningDlls";
-            // 
             // nameDataGridViewTextBoxColumn
             // 
             this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
@@ -123,27 +122,14 @@
             // 
             this.RunningDllsBindingSource.DataSource = typeof(DllServer.DllExecutor);
             // 
-            // nameDataGridViewTextBoxColumn1
+            // RunningDlls_label
             // 
-            this.nameDataGridViewTextBoxColumn1.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn1.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn1.Name = "nameDataGridViewTextBoxColumn1";
-            // 
-            // pathDataGridViewTextBoxColumn1
-            // 
-            this.pathDataGridViewTextBoxColumn1.DataPropertyName = "Path";
-            this.pathDataGridViewTextBoxColumn1.HeaderText = "Path";
-            this.pathDataGridViewTextBoxColumn1.Name = "pathDataGridViewTextBoxColumn1";
-            // 
-            // startTimeDataGridViewTextBoxColumn1
-            // 
-            this.startTimeDataGridViewTextBoxColumn1.DataPropertyName = "StartTime";
-            this.startTimeDataGridViewTextBoxColumn1.HeaderText = "StartTime";
-            this.startTimeDataGridViewTextBoxColumn1.Name = "startTimeDataGridViewTextBoxColumn1";
-            // 
-            // AwaitingDllsBindingSource
-            // 
-            this.AwaitingDllsBindingSource.DataSource = typeof(DllServer.DllExecutor);
+            this.RunningDlls_label.AutoSize = true;
+            this.RunningDlls_label.Location = new System.Drawing.Point(498, 11);
+            this.RunningDlls_label.Name = "RunningDlls_label";
+            this.RunningDlls_label.Size = new System.Drawing.Size(64, 13);
+            this.RunningDlls_label.TabIndex = 3;
+            this.RunningDlls_label.Text = "RunningDlls";
             // 
             // StartDllButton
             // 
@@ -165,6 +151,24 @@
             this.StopDllButton.UseVisualStyleBackColor = true;
             this.StopDllButton.Click += new System.EventHandler(this.StopDllButton_Click);
             // 
+            // nameDataGridViewTextBoxColumn1
+            // 
+            this.nameDataGridViewTextBoxColumn1.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn1.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn1.Name = "nameDataGridViewTextBoxColumn1";
+            // 
+            // pathDataGridViewTextBoxColumn1
+            // 
+            this.pathDataGridViewTextBoxColumn1.DataPropertyName = "Path";
+            this.pathDataGridViewTextBoxColumn1.HeaderText = "Path";
+            this.pathDataGridViewTextBoxColumn1.Name = "pathDataGridViewTextBoxColumn1";
+            // 
+            // startTimeDataGridViewTextBoxColumn1
+            // 
+            this.startTimeDataGridViewTextBoxColumn1.DataPropertyName = "StartTime";
+            this.startTimeDataGridViewTextBoxColumn1.HeaderText = "StartTime";
+            this.startTimeDataGridViewTextBoxColumn1.Name = "startTimeDataGridViewTextBoxColumn1";
+            // 
             // TaskManagerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -180,9 +184,9 @@
             this.ShowIcon = false;
             this.Text = "TaskManagerForm";
             ((System.ComponentModel.ISupportInitialize)(this.AwaitingDlls_DataGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AwaitingDllsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RunningDlls_DataGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RunningDllsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AwaitingDllsBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -196,13 +200,13 @@
         private System.Windows.Forms.DataGridView RunningDlls_DataGrid;
         private System.Windows.Forms.Label RunningDlls_label;
         private System.Windows.Forms.BindingSource RunningDllsBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn pathDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn startTimeDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn pathDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn startTimeDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button StartDllButton;
         private System.Windows.Forms.Button StopDllButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pathDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn startTimeDataGridViewTextBoxColumn1;
     }
 }

@@ -7,6 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Reflection;
+using System.ComponentModel;
 
 namespace DllServer
 {
@@ -16,8 +17,8 @@ namespace DllServer
 
         private Dictionary<string,Dll> running_dlls = new Dictionary<string, Dll>();
         private Dictionary<string,Dll> awaiting_dlls = new Dictionary<string, Dll>();
-        private List<Dll> running_dlls_data_source;
-        private List<Dll> awaiting_dlls_data_source;
+        private List<Dll> running_dlls_data_source = new List<Dll>();
+        public BindingList<Dll> awaiting_dlls_data_source = new BindingList<Dll>();
         private Dictionary<string,Thread> running_dll_executing_threads = new Dictionary<string, Thread>();
         
 
@@ -25,18 +26,16 @@ namespace DllServer
         {
             get 
             { 
-                
-                running_dlls_data_source = running_dlls.Values.ToList();
+                                
                 return running_dlls_data_source;
             }
         }
         
-        public List<Dll> AwaitingDlls_data_source
+        public BindingList<Dll> AwaitingDlls_data_source
         {
             get
             {
-                
-                awaiting_dlls_data_source = running_dlls.Values.ToList();
+                              
                 return awaiting_dlls_data_source;
             }
         }
@@ -87,7 +86,7 @@ namespace DllServer
         public void AddDll(ref List<Dll> dlls)
         {   
             List<string> fail_to_load = new List<string>();
-             
+            
             
 
             for(int i = 0; i < dlls.Count;++i)
@@ -95,6 +94,7 @@ namespace DllServer
                 if(!awaiting_dlls.ContainsKey(dlls[i].Name))
                 {
                     awaiting_dlls.Add(dlls[i].Name,dlls[i]);
+                    awaiting_dlls_data_source.Add(dlls[0]);
                 }
                 else
                 {
