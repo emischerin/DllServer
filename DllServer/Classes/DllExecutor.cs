@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 using System.Reflection;
 using System.ComponentModel;
 
@@ -55,7 +56,7 @@ namespace DllServer
 
                 running_dll_executing_threads.Add(to_start.Name,t);
 
-                t.Start();
+                t.Start(to_start);
 
             }
 
@@ -129,15 +130,37 @@ namespace DllServer
         private static void StartExecutionThread(object main)
         {
             
+            Dll d = (main as Dll);
 
             try
             {
                 
-                Assembly a = Assembly.LoadFrom
+                Assembly a = Assembly.Load
                (
-                    (main as Dll).Path
+                    File.ReadAllBytes(d.Path)
                 );
-                a.GetType().GetMethod("Main").Invoke(a, null);
+
+                
+
+
+                MethodInfo entry_point = a.EntryPoint;
+
+                if(entry_point != null)
+                {
+                    
+                }
+                
+                
+
+
+                //Type t = a.GetType("Program");
+                
+
+                //MethodInfo mi = t.GetMethod("Main");
+
+                //object o = Activator.CreateInstance(t);
+
+                //mi.Invoke(o,null);
 
             }
             catch (Exception e)

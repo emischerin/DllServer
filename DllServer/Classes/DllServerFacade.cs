@@ -23,7 +23,7 @@ namespace DllServer
                 
                 opfd.InitialDirectory = "c:\\";
                 
-                opfd.Filter = "Dlls (*.dll)|*.dll";
+                //opfd.Filter = "Dlls (*.dll)|*.dll";
                 opfd.Multiselect = true;
                 
 
