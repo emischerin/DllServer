@@ -157,7 +157,7 @@ namespace DllServer
                      else
                      {
                         IEnumerable<Type> exporting_types = a.ExportedTypes;
-                        Type start_assembly_type = exporting_types.First().GetType();
+                        Type start_assembly_type = exporting_types.First();
                         InvokeEntryPoint(entry_point,start_assembly_type);
                     }
 
@@ -179,7 +179,7 @@ namespace DllServer
         private static void InvokeEntryPoint(MethodInfo method_info,Type t)
         {
             object o = Activator.CreateInstance(t);
-            method_info.Invoke(o, new object[1]);
+            method_info.Invoke(o, new object[0]);
         }
         
      
