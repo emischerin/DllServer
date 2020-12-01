@@ -28,20 +28,26 @@ namespace DllServer.Forms
         private void StartDllButton_Click(object sender, EventArgs e)
         {
             Dll selected_dll;
-            if((dll_executor != null) && 
+            if((AwaitingDlls_DataGrid.SelectedRows.Count) > 0)
+            { 
+                if ((dll_executor != null) && 
                 (selected_dll = (AwaitingDlls_DataGrid.SelectedRows[0].DataBoundItem as Dll)) != null)
-            {                
-                dll_executor.StartDll(selected_dll.Name);
+                {                
+                    dll_executor.StartDll(selected_dll.Name);
+                }
             }
         }
 
         private void StopDllButton_Click(object sender, EventArgs e)
         {
             Dll selected_dll;
-            if ((dll_executor != null) &&
-                (selected_dll = (RunningDlls_DataGrid.SelectedRows[0].DataBoundItem as Dll)) != null)
-            {
-                dll_executor.StopDll(selected_dll.Name);
+            if(RunningDlls_DataGrid.SelectedRows.Count > 0)
+            { 
+                if ((dll_executor != null) &&
+                    (selected_dll = (RunningDlls_DataGrid.SelectedRows[0].DataBoundItem as Dll)) != null)
+                {
+                    dll_executor.StopDll(selected_dll.Name);
+                }
             }
         }
     }
