@@ -23,8 +23,8 @@ namespace DllServer
                 
                 opfd.InitialDirectory = "c:\\";
                 
-                //opfd.Filter = "Dlls (*.dll)|*.dll";
-                opfd.Multiselect = true;
+                opfd.Filter = "Dlls (*.dll)|*.dll|Executable files (*.exe)|*.exe";
+                opfd.Multiselect = false;
                 
 
                 if(opfd.ShowDialog() == DialogResult.OK)
