@@ -147,13 +147,19 @@ namespace DllServer
 
                 if(entry_point != null)
                 {
+                                            
                     Type entry_point_type = entry_point.DeclaringType;
-
-                    object o = Activator.CreateInstance(entry_point_type);
-
-                    
-
-                    entry_point.Invoke(o,new object[1]);
+                    if(!entry_point_type.IsAbstract)
+                    {
+                        InvokeEntryPoint(entry_point,entry_point_type);
+                    }
+                                
+                     else
+                     {
+                        IEnumerable<Type> exporting_types = a.ExportedTypes;
+                        Type start_assembly_type = exporting_types.First().GetType();
+                        InvokeEntryPoint(entry_point,start_assembly_type);
+                    }
 
 
                 }
@@ -168,6 +174,12 @@ namespace DllServer
                 MessageBox.Show(e.ToString());
             }
             
+        }
+
+        private static void InvokeEntryPoint(MethodInfo method_info,Type t)
+        {
+            object o = Activator.CreateInstance(t);
+            method_info.Invoke(o, new object[1]);
         }
         
      
