@@ -36,6 +36,8 @@ namespace DllServer.Forms
                     dll_executor.StartDll(selected_dll.Name);
                 }
             }
+
+            UpdateDllLists();
         }
 
         private void StopDllButton_Click(object sender, EventArgs e)
@@ -49,6 +51,15 @@ namespace DllServer.Forms
                     dll_executor.StopDll(selected_dll.Name);
                 }
             }
+
+            UpdateDllLists();
+        }
+
+        private void UpdateDllLists()
+        {
+            this.AwaitingDlls_DataGrid.Update();
+            this.RunningDlls_DataGrid.Update();
+            this.Update();
         }
     }
 }
