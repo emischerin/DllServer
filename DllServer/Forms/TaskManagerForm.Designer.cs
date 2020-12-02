@@ -36,13 +36,13 @@
             this.AwaitingDllsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.AwaitingDlls_label = new System.Windows.Forms.Label();
             this.RunningDlls_DataGrid = new System.Windows.Forms.DataGridView();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pathDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.startTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RunningDllsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.RunningDlls_label = new System.Windows.Forms.Label();
             this.StartDllButton = new System.Windows.Forms.Button();
             this.StopDllButton = new System.Windows.Forms.Button();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pathDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.startTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.AwaitingDlls_DataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AwaitingDllsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RunningDlls_DataGrid)).BeginInit();
@@ -68,6 +68,7 @@
             this.AwaitingDlls_DataGrid.Location = new System.Drawing.Point(16, 30);
             this.AwaitingDlls_DataGrid.MultiSelect = false;
             this.AwaitingDlls_DataGrid.Name = "AwaitingDlls_DataGrid";
+            this.AwaitingDlls_DataGrid.RowHeadersVisible = false;
             this.AwaitingDlls_DataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.AwaitingDlls_DataGrid.Size = new System.Drawing.Size(269, 314);
             this.AwaitingDlls_DataGrid.TabIndex = 0;
@@ -121,9 +122,31 @@
             this.RunningDlls_DataGrid.MultiSelect = false;
             this.RunningDlls_DataGrid.Name = "RunningDlls_DataGrid";
             this.RunningDlls_DataGrid.ReadOnly = true;
+            this.RunningDlls_DataGrid.RowHeadersVisible = false;
             this.RunningDlls_DataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.RunningDlls_DataGrid.Size = new System.Drawing.Size(287, 314);
             this.RunningDlls_DataGrid.TabIndex = 2;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // pathDataGridViewTextBoxColumn
+            // 
+            this.pathDataGridViewTextBoxColumn.DataPropertyName = "Path";
+            this.pathDataGridViewTextBoxColumn.HeaderText = "Path";
+            this.pathDataGridViewTextBoxColumn.Name = "pathDataGridViewTextBoxColumn";
+            this.pathDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // startTimeDataGridViewTextBoxColumn
+            // 
+            this.startTimeDataGridViewTextBoxColumn.DataPropertyName = "StartTime";
+            this.startTimeDataGridViewTextBoxColumn.HeaderText = "StartTime";
+            this.startTimeDataGridViewTextBoxColumn.Name = "startTimeDataGridViewTextBoxColumn";
+            this.startTimeDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // RunningDllsBindingSource
             // 
@@ -158,27 +181,6 @@
             this.StopDllButton.Text = "StopDll";
             this.StopDllButton.UseVisualStyleBackColor = true;
             this.StopDllButton.Click += new System.EventHandler(this.StopDllButton_Click);
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // pathDataGridViewTextBoxColumn
-            // 
-            this.pathDataGridViewTextBoxColumn.DataPropertyName = "Path";
-            this.pathDataGridViewTextBoxColumn.HeaderText = "Path";
-            this.pathDataGridViewTextBoxColumn.Name = "pathDataGridViewTextBoxColumn";
-            this.pathDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // startTimeDataGridViewTextBoxColumn
-            // 
-            this.startTimeDataGridViewTextBoxColumn.DataPropertyName = "StartTime";
-            this.startTimeDataGridViewTextBoxColumn.HeaderText = "StartTime";
-            this.startTimeDataGridViewTextBoxColumn.Name = "startTimeDataGridViewTextBoxColumn";
-            this.startTimeDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // TaskManagerForm
             // 
