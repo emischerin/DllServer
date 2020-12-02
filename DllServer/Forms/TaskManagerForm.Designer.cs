@@ -115,10 +115,12 @@
             this.nameDataGridViewTextBoxColumn,
             this.pathDataGridViewTextBoxColumn,
             this.startTimeDataGridViewTextBoxColumn});
+            this.RunningDlls_DataGrid.DataBindings.Add(new System.Windows.Forms.Binding("Tag", this.RunningDllsBindingSource, "Name", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.RunningDlls_DataGrid.DataSource = this.RunningDllsBindingSource;
             this.RunningDlls_DataGrid.Location = new System.Drawing.Point(501, 30);
             this.RunningDlls_DataGrid.MultiSelect = false;
             this.RunningDlls_DataGrid.Name = "RunningDlls_DataGrid";
+            this.RunningDlls_DataGrid.ReadOnly = true;
             this.RunningDlls_DataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.RunningDlls_DataGrid.Size = new System.Drawing.Size(287, 314);
             this.RunningDlls_DataGrid.TabIndex = 2;
@@ -162,18 +164,21 @@
             this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
             this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
             this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // pathDataGridViewTextBoxColumn
             // 
             this.pathDataGridViewTextBoxColumn.DataPropertyName = "Path";
             this.pathDataGridViewTextBoxColumn.HeaderText = "Path";
             this.pathDataGridViewTextBoxColumn.Name = "pathDataGridViewTextBoxColumn";
+            this.pathDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // startTimeDataGridViewTextBoxColumn
             // 
             this.startTimeDataGridViewTextBoxColumn.DataPropertyName = "StartTime";
             this.startTimeDataGridViewTextBoxColumn.HeaderText = "StartTime";
             this.startTimeDataGridViewTextBoxColumn.Name = "startTimeDataGridViewTextBoxColumn";
+            this.startTimeDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // TaskManagerForm
             // 
