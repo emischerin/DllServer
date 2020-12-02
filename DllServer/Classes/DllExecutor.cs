@@ -23,8 +23,8 @@ namespace DllServer
 
         private Dictionary<string,Dll> running_dlls = new Dictionary<string, Dll>();
         private Dictionary<string,Dll> awaiting_dlls = new Dictionary<string, Dll>();
-        public BindingList<Dll> running_dlls_data_source = new BindingList<Dll>();
-        public BindingList<Dll> awaiting_dlls_data_source = new BindingList<Dll>();
+       // public BindingList<Dll> running_dlls_data_source = new BindingList<Dll>();
+       // public BindingList<Dll> awaiting_dlls_data_source = new BindingList<Dll>();
         private Dictionary<string,Thread> running_dll_executing_threads = new Dictionary<string, Thread>();
         
 
@@ -105,7 +105,7 @@ namespace DllServer
                 if(!awaiting_dlls.ContainsKey(dlls[i].Name))
                 {
                     awaiting_dlls.Add(dlls[i].Name,dlls[i]);
-                    awaiting_dlls_data_source.Add(dlls[0]);
+                    NotifyPropertyChanged("RunningDlls_data_source");
                 }
                 else
                 {

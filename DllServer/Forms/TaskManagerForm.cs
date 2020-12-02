@@ -19,8 +19,8 @@ namespace DllServer.Forms
             
             InitializeComponent();
             this.dll_executor = de;
-            AwaitingDlls_DataGrid.DataSource = de.AwaitingDlls_data_source;
-            RunningDlls_DataGrid.DataSource = de.RunningDlls_data_source;
+            AwaitingDlls_DataGrid.DataSource = this.dll_executor.AwaitingDlls_data_source;
+            RunningDlls_DataGrid.DataSource = this.dll_executor.RunningDlls_data_source;
             
             
         }
@@ -57,9 +57,12 @@ namespace DllServer.Forms
 
         private void UpdateDllLists()
         {
+            this.AwaitingDlls_DataGrid.DataSource = null;
+            this.RunningDlls_DataGrid.DataSource = null;
+            AwaitingDlls_DataGrid.DataSource = this.dll_executor.AwaitingDlls_data_source;
+            RunningDlls_DataGrid.DataSource = this.dll_executor.RunningDlls_data_source;
             this.AwaitingDlls_DataGrid.Update();
             this.RunningDlls_DataGrid.Update();
-            
             this.Update();
         }
     }
