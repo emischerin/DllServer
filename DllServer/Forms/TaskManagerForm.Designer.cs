@@ -30,20 +30,23 @@
         {
             this.components = new System.ComponentModel.Container();
             this.AwaitingDlls_DataGrid = new System.Windows.Forms.DataGridView();
-            this.AwaitingDlls_label = new System.Windows.Forms.Label();
-            this.RunningDlls_DataGrid = new System.Windows.Forms.DataGridView();
-            this.RunningDlls_label = new System.Windows.Forms.Label();
-            this.StartDllButton = new System.Windows.Forms.Button();
-            this.StopDllButton = new System.Windows.Forms.Button();
-            this.RunningDllsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.nameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pathDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.startTimeDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AwaitingDllsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.AwaitingDlls_label = new System.Windows.Forms.Label();
+            this.RunningDlls_DataGrid = new System.Windows.Forms.DataGridView();
+            this.RunningDllsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.RunningDlls_label = new System.Windows.Forms.Label();
+            this.StartDllButton = new System.Windows.Forms.Button();
+            this.StopDllButton = new System.Windows.Forms.Button();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pathDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.startTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.AwaitingDlls_DataGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AwaitingDllsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RunningDlls_DataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RunningDllsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AwaitingDllsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // AwaitingDlls_DataGrid
@@ -69,6 +72,29 @@
             this.AwaitingDlls_DataGrid.Size = new System.Drawing.Size(269, 314);
             this.AwaitingDlls_DataGrid.TabIndex = 0;
             // 
+            // nameDataGridViewTextBoxColumn1
+            // 
+            this.nameDataGridViewTextBoxColumn1.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn1.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn1.Name = "nameDataGridViewTextBoxColumn1";
+            // 
+            // pathDataGridViewTextBoxColumn1
+            // 
+            this.pathDataGridViewTextBoxColumn1.DataPropertyName = "Path";
+            this.pathDataGridViewTextBoxColumn1.HeaderText = "Path";
+            this.pathDataGridViewTextBoxColumn1.Name = "pathDataGridViewTextBoxColumn1";
+            // 
+            // startTimeDataGridViewTextBoxColumn1
+            // 
+            this.startTimeDataGridViewTextBoxColumn1.DataPropertyName = "StartTime";
+            this.startTimeDataGridViewTextBoxColumn1.HeaderText = "StartTime";
+            this.startTimeDataGridViewTextBoxColumn1.Name = "startTimeDataGridViewTextBoxColumn1";
+            // 
+            // AwaitingDllsBindingSource
+            // 
+            this.AwaitingDllsBindingSource.DataMember = "AwaitingDlls_data_source";
+            this.AwaitingDllsBindingSource.DataSource = typeof(DllServer.DllExecutor);
+            // 
             // AwaitingDlls_label
             // 
             this.AwaitingDlls_label.AutoSize = true;
@@ -85,6 +111,10 @@
             this.RunningDlls_DataGrid.AutoGenerateColumns = false;
             this.RunningDlls_DataGrid.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.RunningDlls_DataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.RunningDlls_DataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.nameDataGridViewTextBoxColumn,
+            this.pathDataGridViewTextBoxColumn,
+            this.startTimeDataGridViewTextBoxColumn});
             this.RunningDlls_DataGrid.DataSource = this.RunningDllsBindingSource;
             this.RunningDlls_DataGrid.Location = new System.Drawing.Point(501, 30);
             this.RunningDlls_DataGrid.MultiSelect = false;
@@ -92,6 +122,11 @@
             this.RunningDlls_DataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.RunningDlls_DataGrid.Size = new System.Drawing.Size(287, 314);
             this.RunningDlls_DataGrid.TabIndex = 2;
+            // 
+            // RunningDllsBindingSource
+            // 
+            this.RunningDllsBindingSource.DataMember = "RunningDlls_data_source";
+            this.RunningDllsBindingSource.DataSource = typeof(DllServer.DllExecutor);
             // 
             // RunningDlls_label
             // 
@@ -122,32 +157,23 @@
             this.StopDllButton.UseVisualStyleBackColor = true;
             this.StopDllButton.Click += new System.EventHandler(this.StopDllButton_Click);
             // 
-            // RunningDllsBindingSource
+            // nameDataGridViewTextBoxColumn
             // 
-            this.RunningDllsBindingSource.DataSource = typeof(DllServer.DllExecutor);
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
             // 
-            // nameDataGridViewTextBoxColumn1
+            // pathDataGridViewTextBoxColumn
             // 
-            this.nameDataGridViewTextBoxColumn1.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn1.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn1.Name = "nameDataGridViewTextBoxColumn1";
+            this.pathDataGridViewTextBoxColumn.DataPropertyName = "Path";
+            this.pathDataGridViewTextBoxColumn.HeaderText = "Path";
+            this.pathDataGridViewTextBoxColumn.Name = "pathDataGridViewTextBoxColumn";
             // 
-            // pathDataGridViewTextBoxColumn1
+            // startTimeDataGridViewTextBoxColumn
             // 
-            this.pathDataGridViewTextBoxColumn1.DataPropertyName = "Path";
-            this.pathDataGridViewTextBoxColumn1.HeaderText = "Path";
-            this.pathDataGridViewTextBoxColumn1.Name = "pathDataGridViewTextBoxColumn1";
-            // 
-            // startTimeDataGridViewTextBoxColumn1
-            // 
-            this.startTimeDataGridViewTextBoxColumn1.DataPropertyName = "StartTime";
-            this.startTimeDataGridViewTextBoxColumn1.HeaderText = "StartTime";
-            this.startTimeDataGridViewTextBoxColumn1.Name = "startTimeDataGridViewTextBoxColumn1";
-            // 
-            // AwaitingDllsBindingSource
-            // 
-            this.AwaitingDllsBindingSource.DataMember = "AwaitingDlls_data_source";
-            this.AwaitingDllsBindingSource.DataSource = typeof(DllServer.DllExecutor);
+            this.startTimeDataGridViewTextBoxColumn.DataPropertyName = "StartTime";
+            this.startTimeDataGridViewTextBoxColumn.HeaderText = "StartTime";
+            this.startTimeDataGridViewTextBoxColumn.Name = "startTimeDataGridViewTextBoxColumn";
             // 
             // TaskManagerForm
             // 
@@ -164,9 +190,9 @@
             this.ShowIcon = false;
             this.Text = "TaskManagerForm";
             ((System.ComponentModel.ISupportInitialize)(this.AwaitingDlls_DataGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AwaitingDllsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RunningDlls_DataGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RunningDllsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AwaitingDllsBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -185,5 +211,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn pathDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn startTimeDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pathDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn startTimeDataGridViewTextBoxColumn;
     }
 }

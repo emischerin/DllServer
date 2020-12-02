@@ -59,6 +59,7 @@ namespace DllServer.Forms
         {
             this.AwaitingDlls_DataGrid.Update();
             this.RunningDlls_DataGrid.Update();
+            
             this.Update();
         }
     }

@@ -1,7 +1,6 @@
 S:\VSProjects\DllServer\DllServer\DllServer\bin\Release\DllServer.exe.config
 S:\VSProjects\DllServer\DllServer\DllServer\bin\Release\DllServer.exe
 S:\VSProjects\DllServer\DllServer\DllServer\bin\Release\DllServer.pdb
-S:\VSProjects\DllServer\DllServer\DllServer\obj\Release\DllServer.csprojAssemblyReference.cache
 S:\VSProjects\DllServer\DllServer\DllServer\obj\Release\DllServer.ServerForm.resources
 S:\VSProjects\DllServer\DllServer\DllServer\obj\Release\DllServer.Forms.TaskManagerForm.resources
 S:\VSProjects\DllServer\DllServer\DllServer\obj\Release\DllServer.Properties.Resources.resources
@@ -9,3 +8,4 @@ S:\VSProjects\DllServer\DllServer\DllServer\obj\Release\DllServer.csproj.Generat
 S:\VSProjects\DllServer\DllServer\DllServer\obj\Release\DllServer.csproj.CoreCompileInputs.cache
 S:\VSProjects\DllServer\DllServer\DllServer\obj\Release\DllServer.exe
 S:\VSProjects\DllServer\DllServer\DllServer\obj\Release\DllServer.pdb
+S:\VSProjects\DllServer\DllServer\DllServer\obj\Release\DllServer.csprojAssemblyReference.cache

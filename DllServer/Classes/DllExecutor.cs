@@ -9,11 +9,16 @@ using System.Windows.Forms;
 using System.IO;
 using System.Reflection;
 using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace DllServer
 {
-    public class DllExecutor
+    // Maybe to implement INotifyPropertyChanged?
+    public class DllExecutor : INotifyPropertyChanged
     {
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
         private ErrorHandler ep = new ErrorHandler();
 
         private Dictionary<string,Dll> running_dlls = new Dictionary<string, Dll>();
@@ -23,21 +28,21 @@ namespace DllServer
         private Dictionary<string,Thread> running_dll_executing_threads = new Dictionary<string, Thread>();
         
 
-        public BindingList<Dll> RunningDlls_data_source
+        public List<Dll> RunningDlls_data_source
         {
             get 
             { 
                                 
-                return running_dlls_data_source;
+                return running_dlls.Values.ToList<Dll>();
             }
         }
         
-        public BindingList<Dll> AwaitingDlls_data_source
+        public List<Dll> AwaitingDlls_data_source
         {
             get
             {
                               
-                return awaiting_dlls_data_source;
+                return awaiting_dlls.Values.ToList<Dll>();
             }
         }
 
@@ -50,12 +55,13 @@ namespace DllServer
                 awaiting_dlls.Remove(dll_name);
 
                 running_dlls.Add(dll_name,to_start);
-                               
+                NotifyPropertyChanged("RunningDlls_data_source");
+                NotifyPropertyChanged("AwaitingDlls_data_source");
 
                 Thread t = new Thread(new ParameterizedThreadStart(StartExecutionThread));
-
+                t.IsBackground = true;
                 running_dll_executing_threads.Add(to_start.Name,t);
-
+                
                 t.Start(to_start);
 
                 
@@ -79,7 +85,9 @@ namespace DllServer
                     running_dlls.Remove(dll_name);
 
                     awaiting_dlls.Add(dll_name,tmp);
-                    
+
+                    NotifyPropertyChanged("RunningDlls_data_source");
+                    NotifyPropertyChanged("AwaitingDlls_data_source");
 
                 }
 
@@ -182,6 +190,11 @@ namespace DllServer
         {
             object o = Activator.CreateInstance(t);
             method_info.Invoke(o, new object[0]);
+        }
+
+        private void NotifyPropertyChanged([CallerMemberName]string property_name = "")
+        {
+            PropertyChanged?.Invoke(this,new PropertyChangedEventArgs(property_name));
         }
         
      
