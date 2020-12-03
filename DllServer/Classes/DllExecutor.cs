@@ -20,12 +20,10 @@ namespace DllServer
         public event PropertyChangedEventHandler PropertyChanged;
 
         private ErrorHandler ep = new ErrorHandler();
-
-        private Dictionary<string,Dll> running_dlls = new Dictionary<string, Dll>();
-        private Dictionary<string,Dll> awaiting_dlls = new Dictionary<string, Dll>();
-       // public BindingList<Dll> running_dlls_data_source = new BindingList<Dll>();
-       // public BindingList<Dll> awaiting_dlls_data_source = new BindingList<Dll>();
-        private Dictionary<string,Thread> running_dll_executing_threads = new Dictionary<string, Thread>();
+        private static Mutex stop_run_dll_mutex = new Mutex();
+        private static Dictionary<string,Dll> running_dlls = new Dictionary<string, Dll>();
+        private static Dictionary<string,Dll> awaiting_dlls = new Dictionary<string, Dll>();
+        private static Dictionary<string,Thread> running_dll_executing_threads = new Dictionary<string, Thread>();
         
 
         public List<Dll> RunningDlls_data_source
@@ -58,11 +56,13 @@ namespace DllServer
                 t.IsBackground = true;
               
                 
+                
                 t.Start(to_start);
 
-                awaiting_dlls.Remove(dll_name);
-                running_dlls.Add(dll_name, to_start);
-                running_dll_executing_threads.Add(to_start.Name, t);
+                //awaiting_dlls.Remove(dll_name);
+                //running_dlls.Add(dll_name, to_start);
+                //running_dll_executing_threads.Add(to_start.Name, t);
+                
                 
                 
             }
@@ -140,10 +140,13 @@ namespace DllServer
         {
             
             Dll d = (main as Dll);
+                     
+
 
             try
             {
-                
+
+
                 Assembly a = Assembly.Load
                (
                     File.ReadAllBytes(d.Path)
@@ -169,6 +172,13 @@ namespace DllServer
                         Type start_assembly_type = exporting_types.First();
                         InvokeEntryPoint(entry_point,start_assembly_type);
                     }
+
+                    
+                    stop_run_dll_mutex.WaitOne();
+                    awaiting_dlls.Remove(d.Name);
+                    running_dlls.Add(d.Name,d);
+                    running_dll_executing_threads.Add(d.Name, Thread.CurrentThread);
+                    stop_run_dll_mutex.ReleaseMutex();
 
 
                 }
