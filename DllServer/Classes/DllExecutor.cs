@@ -48,24 +48,23 @@ namespace DllServer
 
         public void StartDll(string dll_name)
         {
+            
+
             if(ValidateOnStartDll(ref dll_name))
             {
                 Dll to_start = awaiting_dlls[dll_name];
-
-                awaiting_dlls.Remove(dll_name);
-
-                running_dlls.Add(dll_name,to_start);
-                NotifyPropertyChanged("RunningDlls_data_source");
-                NotifyPropertyChanged("AwaitingDlls_data_source");
-
+            
                 Thread t = new Thread(new ParameterizedThreadStart(StartExecutionThread));
                 t.IsBackground = true;
-                running_dll_executing_threads.Add(to_start.Name,t);
+              
                 
                 t.Start(to_start);
 
+                awaiting_dlls.Remove(dll_name);
+                running_dlls.Add(dll_name, to_start);
+                running_dll_executing_threads.Add(to_start.Name, t);
                 
-
+                
             }
 
                         
@@ -182,7 +181,9 @@ namespace DllServer
             catch (Exception e)
             {
                 MessageBox.Show(e.ToString());
+                
             }
+                       
             
         }
 
